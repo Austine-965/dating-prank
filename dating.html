@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Date Application</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #ff4081;
+            margin-bottom: 10px;
+        }
+
+        .heart {
+            font-size: 60px;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 14px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background: #4caf50;
+            color: white;
+        }
+
+        #noBtn {
+            background: #f44336;
+            color: white;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ff4081;
+            min-height: 30px;
+        }
+
+        .reset {
+            background: #333;
+            color: white;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="heart">❤️</div>
+
+        <h1>DATE APPLICATION</h1>
+
+        <p>
+            You have been selected for a very important date.
+        </p>
+
+        <p>
+            Would you like to go on a date?
+        </p>
+
+        <button id="yesBtn">YES 😍</button>
+        <button id="noBtn">NO 😭</button>
+
+        <div id="message"></div>
+
+        <button class="reset" id="resetBtn">Try Again 🔄</button>
+
+    </div>
+
+
+    <script>
+
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+        const message = document.getElementById("message");
+        const resetBtn = document.getElementById("resetBtn");
+
+        const messages = [
+            "Application rejected ❌😂",
+            "Sorry, your date request has been denied.",
+            "The committee has reviewed your application. NOPE 😭",
+            "System error: Too much excitement detected 😂",
+            "Date unavailable. Please try again later.",
+            "Your application is still under review... forever 💀",
+            "Unfortunately, the answer is NO 😂",
+            "The dating department has rejected your request."
+        ];
+
+        let count = 0;
+
+        yesBtn.addEventListener("click", function() {
+
+            message.textContent = messages[count];
+
+            count++;
+
+            if (count >= messages.length) {
+                count = 0;
+            }
+
+            yesBtn.style.transform = "translateX(10px)";
+        });
+
+
+        noBtn.addEventListener("click", function() {
+
+            message.textContent =
+                "You clicked NO... but somehow that's still suspicious 😂";
+
+        });
+
+
+        resetBtn.addEventListener("click", function() {
+
+            message.textContent = "";
+            yesBtn.style.transform = "scale(1)";
+            resetBtn.style.display = "none";
+
+        });
+
+    </script>
+
+</body>
+</html>
